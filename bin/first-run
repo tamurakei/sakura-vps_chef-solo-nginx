@@ -5,11 +5,11 @@ if [ -d /var/chef/backup ]; then
     exit 0
 fi
 
-echo "chefをインストールします。。少し時間がかかります。\\n\\n"
+echo -e "chefをインストールします。。少し時間がかかります。\n\n"
 
 curl -L https://www.opscode.com/chef/install.sh | sh
 
-echo "chefのインストールが完了しました。\n\n\n"
+echo -e "chefのインストールが完了しました。\n\n\n"
 
 ##
 # SSHのポートの設定をする
@@ -18,7 +18,7 @@ SSH_PORT_CHECK="FirstCheck"
 
 while [ -n "$SSH_PORT_CHECK" -o -z "$SSH_PORT" ]
 do
-    echo "SSHのポートを指定してください。デフォルト(22)のものから変更することが推奨されています。\n数値で入力してください。"
+    echo -e "SSHのポートを指定してください。デフォルト(22)のものから変更することが推奨されています。\n数値で入力してください。"
     read SSH_PORT
     SSH_PORT_CHECK=`echo -n $SSH_PORT | sed 's/[0-9]//g'`
 
@@ -32,7 +32,7 @@ do
     fi
 done
 
-echo $SSH_PORT "で指定されました。"
+echo -e $SSH_PORT "で指定されました。\n\n"
 
 ##
 # SSHの通信元IPアドレスの設定をする
@@ -51,10 +51,9 @@ do
     fi
 done
 
-echo $SSH_IP "で指定されました。"
+echo -e $SSH_IP "で指定されました。\n\n"
 
 echo "default['ssh']['port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/ssh/attributes/default.rb
 echo "default['iptables']['ssh_port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/iptables/attributes/default.rb
-
 
 chef-solo -c /var/chef/config/solo.rb -j /var/chef/bin/runlist.json
