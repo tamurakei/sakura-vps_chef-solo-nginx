@@ -11,7 +11,7 @@
 # default value.
 
 ##Port 22
-Port <%= node.sshd.port %>
+Port <%= node['sshd']['port'] %>
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
