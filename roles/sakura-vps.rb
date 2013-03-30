@@ -1,7 +1,7 @@
 name "sakura-vps"
 description "for SAKURA Internet VPS Server"
 run_list(
-  "recipe[ssh]",
+  "recipe[sshd]",
   "recipe[iptables]",
 )
 
