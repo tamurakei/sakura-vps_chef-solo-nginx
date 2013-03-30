@@ -1,4 +1,9 @@
-#!/bin/bash
+#!/bin/sh
+
+if [ -d /var/chef ]; then
+    echo "既にChefがインストールされています。このスクリプトの初期設定を想定していますので、終了します。"
+    exit 0
+fi
 
 echo "chefをインストールします。。"
 
@@ -6,6 +11,9 @@ curl -L https://www.opscode.com/chef/install.sh | sh
 
 echo "chefのインストールが完了しました。"
 
+##
+# SSHのポートの設定をする
+##
 SSH_PORT_CHECK="FirstCheck"
 
 while [ -n "$SSH_PORT_CHECK" -o -z "$SSH_PORT" ]
@@ -26,7 +34,34 @@ done
 
 echo $SSH_PORT "で指定されました。"
 
+##
+# SSHの通信元IPアドレスの設定をする
+##
+SSH_IP_CHECK="FirstCheck"
+
+while [ -n "$SSH_IP_CHECK" -o -z "$SSH_IP" ]
+do
+    echo "SSHの接続元のIPアドレスを指定してください。指定しない場合は空でOKです。複数指定する場合はカンマ区切りで。"
+    read SSH_IP
+    SSH_IP_CHECK=`echo -n $SSH_IP | sed 's/[0-9\.,\/]//g'`
+
+    if [ -z "$SSH_IP" ]; then
+        continue
+    fi
+
+    if [ -n "$SSH_IP_CHECK" ]; then
+        echo "SSHのIPアドレスの指定が不正です。"
+        #exit 0
+    fi
+done
+
+echo $SSH_IP "で指定されました。"
+
+
 cat /etc/ssh/sshd_config | sed 's/Port 22/#Port 22\nPort <%= node['\''ssh'\'']['\''port'\''] %>/g' > /var/chef/cookbooks/ssh/templates/default/ssh.erb
-echo "default['ssh']['port'] = '${SSH_PORT}'" >  /var/chef/cookbooks/ssh/attributes/default.rb
+
+echo "default['ssh']['port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/ssh/attributes/default.rb
+echo "default['iptables']['ssh_port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/iptables/attributes/default.rb
+
 
 chef-solo -c /var/chef/config/solo.rb -j /var/chef/bin/runlist.json
