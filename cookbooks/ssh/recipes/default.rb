@@ -10,6 +10,6 @@ template "/etc/ssh/sshd_config" do
   owner "root"
   group "root"
   mode "0600"
-#  notifies :restart, "service[ssh]"
+  notifies :restart, "service[ssh]"
 end
 

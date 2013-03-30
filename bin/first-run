@@ -1,15 +1,15 @@
 #!/bin/sh
 
-if [ -d /var/chef ]; then
-    echo "既にChefがインストールされています。このスクリプトの初期設定を想定していますので、終了します。"
+if [ -d /var/chef/backup ]; then
+    echo "既にインストールされています。このスクリプトの初期設定を想定していますので、終了します。"
     exit 0
 fi
 
-echo "chefをインストールします。。"
+echo "chefをインストールします。。少し時間がかかります。\n\n"
 
 curl -L https://www.opscode.com/chef/install.sh | sh
 
-echo "chefのインストールが完了しました。"
+echo "chefのインストールが完了しました。\n\n\n"
 
 ##
 # SSHのポートの設定をする
@@ -18,7 +18,7 @@ SSH_PORT_CHECK="FirstCheck"
 
 while [ -n "$SSH_PORT_CHECK" -o -z "$SSH_PORT" ]
 do
-    echo "SSHのポートを数値で指定してください。デフォルト(22)のものから変更することが推奨されています。"
+    echo "SSHのポートを指定してください。デフォルト(22)のものから変更することが推奨されています。\n数値で入力してください。"
     read SSH_PORT
     SSH_PORT_CHECK=`echo -n $SSH_PORT | sed 's/[0-9]//g'`
 
@@ -56,9 +56,6 @@ do
 done
 
 echo $SSH_IP "で指定されました。"
-
-
-cat /etc/ssh/sshd_config | sed 's/Port 22/#Port 22\nPort <%= node['\''ssh'\'']['\''port'\''] %>/g' > /var/chef/cookbooks/ssh/templates/default/ssh.erb
 
 echo "default['ssh']['port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/ssh/attributes/default.rb
 echo "default['iptables']['ssh_port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/iptables/attributes/default.rb
