@@ -6,14 +6,23 @@ curl -L https://www.opscode.com/chef/install.sh | sh
 
 echo "chefのインストールが完了しました。"
 
-echo "SSHのポートを指定してください。デフォルトのものから変更することが推奨されています。[default:22]"
-read SSH_PORT
-SSH_PORT_CHECK=`echo -n $SSH_PORT | sed 's/[0-9]//g'`
+SSH_PORT_CHECK="FirstCheck"
 
-if [ -n "$SSH_PORT_CHECK" ]; then
-    echo "SSHのポートは数字で指定してください。"
-    exit 0
-fi
+while [ -n "$SSH_PORT_CHECK" -o -z "$SSH_PORT" ]
+do
+    echo "SSHのポートを数値で指定してください。デフォルト(22)のものから変更することが推奨されています。"
+    read SSH_PORT
+    SSH_PORT_CHECK=`echo -n $SSH_PORT | sed 's/[0-9]//g'`
+
+    if [ -z "$SSH_PORT" ]; then
+        continue
+    fi
+
+    if [ -n "$SSH_PORT_CHECK" ]; then
+        echo "SSHのポートは数字で指定してください。"
+        #exit 0
+    fi
+done
 
 echo $SSH_PORT "で指定されました。"
 
@@ -21,4 +30,3 @@ cat /etc/ssh/sshd_config | sed 's/Port 22/#Port 22\nPort <%= node['\''ssh'\'']['
 echo "default['ssh']['port'] = '${SSH_PORT}'" >  /var/chef/cookbooks/ssh/attributes/default.rb
 
 chef-solo -c /var/chef/config/solo.rb -j /var/chef/bin/runlist.json
-
