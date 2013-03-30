@@ -1,1 +1,1 @@
-default['ssh']['port'] = '1022'
+# ssh attributes

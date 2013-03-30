@@ -5,11 +5,11 @@ if [ -d /var/chef/backup ]; then
     exit 0
 fi
 
-echo -e "chefをインストールします。。少し時間がかかります。\n\n"
+echo -e "\n\nchefをインストールします。。少し時間がかかります。\n\n"
 
 curl -L https://www.opscode.com/chef/install.sh | sh
 
-echo -e "chefのインストールが完了しました。\n\n\n"
+echo -e "\n\nchefのインストールが完了しました。\n\n\n"
 
 ##
 # SSHのポートの設定をする
@@ -39,7 +39,7 @@ echo -e $SSH_PORT "で指定されました。\n\n"
 ##
 SSH_IP_CHECK="FirstCheck"
 
-while [ -n "$SSH_IP_CHECK" -o -z "$SSH_IP" ]
+while [ -n "$SSH_IP_CHECK" ]
 do
     echo "SSHの接続元のIPアドレスを指定してください。指定しない場合は空でOKです。複数指定する場合はカンマ区切りで。"
     read SSH_IP
