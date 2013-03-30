@@ -5,7 +5,7 @@ if [ -d /var/chef/backup ]; then
     exit 0
 fi
 
-echo "chefをインストールします。。少し時間がかかります。\n\n"
+echo "chefをインストールします。。少し時間がかかります。\\n\\n"
 
 curl -L https://www.opscode.com/chef/install.sh | sh
 
@@ -44,10 +44,6 @@ do
     echo "SSHの接続元のIPアドレスを指定してください。指定しない場合は空でOKです。複数指定する場合はカンマ区切りで。"
     read SSH_IP
     SSH_IP_CHECK=`echo -n $SSH_IP | sed 's/[0-9\.,\/]//g'`
-
-    if [ -z "$SSH_IP" ]; then
-        continue
-    fi
 
     if [ -n "$SSH_IP_CHECK" ]; then
         echo "SSHのIPアドレスの指定が不正です。"
