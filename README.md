@@ -13,3 +13,22 @@ Pull Request,Forkなどは歓迎いたします。
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /var/chef && sh /var/chef/bin/first-run`
 
 Chef-Soloがインストールされて、対話形式でインストールする内容を決めていくような動作を行います。
+
+
+# インストール・設定されるもの
+
+## SSH
+* ポートの変更（対話形式で指定）
+* 接続元のIPアドレスの指定（対話形式で指定　設定なしでもOK）
+
+## iptables
+* ポートの通信を最低限に設定
+
+## httpd
+
+## php
+* php-gd
+* php-mbstring
+
+
+
