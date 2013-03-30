@@ -8,14 +8,17 @@ For SAKURA Internet VPS Server setup.
 Pull Request,Forkなどは歓迎いたします。
 
 
-サーバ設定を以下の１行で行います。
+サーバにログイン後、以下の１行を実行するだけで、サーバ設定を全て自動で行います。  
+サーバ構築後の更新やメンテナンスにはまだ対応しておりません。
 
+## ログイン後に実行するコマンド
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /var/chef && sh /var/chef/bin/first-run`
 
-Chef-Soloがインストールされて、対話形式でインストールする内容を決めていくような動作を行います。
+
 
 
 # インストール・設定されるもの
+調整しながら行っておりますので、間違っている点や修正するべき点は遠慮なくご指摘ください。
 
 ## SSH
 * ポートの変更（対話形式で指定）
