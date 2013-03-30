@@ -10,4 +10,4 @@ Pull Request,Forkなどは歓迎いたします。
 
 chef-soloのインストール
 
-`curl -L https://www.opscode.com/chef/install.sh | sh && git clone https://github.com/diverta/sakura-vps_chef-solo.git /var/chef && sh /var/chef/bin/run`
+`git clone https://github.com/diverta/sakura-vps_chef-solo.git /var/chef && sh /var/chef/bin/first-run`
