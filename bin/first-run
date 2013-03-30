@@ -51,11 +51,11 @@ do
     fi
 done
 
-if [ -n "$SSH_PORT" ]; then
+if [ -n "$SSH_IP" ]; then
     echo -e $SSH_IP "で指定されました。\n\n"
 fi
 
-echo "default['sshd']['port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/sshd/attributes/default.rb
-echo "default['iptables']['ssh_port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/iptables/attributes/default.rb
+echo "default['port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/sshd/attributes/default.rb
+echo "default['ssh_port'] = '${SSH_PORT}'" >>  /var/chef/cookbooks/iptables/attributes/default.rb
 
 chef-solo -c /var/chef/config/solo.rb -j /var/chef/bin/runlist.json
