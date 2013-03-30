@@ -2,7 +2,7 @@
 
 echo "chefをインストールします。。"
 
-curl -L https://www.opscode.com/chef/install.sh
+curl -L https://www.opscode.com/chef/install.sh | sh
 
 echo "chefのインストールが完了しました。"
 
