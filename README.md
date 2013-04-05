@@ -11,7 +11,7 @@ Pull Request,Forkなどは歓迎いたします。
 サーバにログイン後、以下の１行を実行するだけで、サーバ設定を全て自動で行います。  
 サーバ構築後の更新やメンテナンスにはまだ対応しておりません。
 
-## ログイン後に実行するコマンド
+## 最初のログイン後に実行する１行だけのコマンドライン
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /var/chef && sh /var/chef/bin/first-run`
 
 
