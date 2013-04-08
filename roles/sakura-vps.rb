@@ -5,6 +5,7 @@ run_list(
   "recipe[iptables]",
   "recipe[httpd]",
   "recipe[php]",
+　"recipe[powerdns]",
 )
 
 default_attributes({

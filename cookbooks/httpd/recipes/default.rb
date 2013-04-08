@@ -18,8 +18,12 @@ end
 #
 # chkconfig
 #
+execute "chkconfig --add httpd" do
+    command "chkconfig --add httpd"
+end
 execute "chkconfig httpd on" do
     command "chkconfig httpd on"
 end
+
 
 

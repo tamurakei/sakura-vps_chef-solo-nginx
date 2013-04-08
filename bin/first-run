@@ -55,7 +55,33 @@ if [ -n "$SSH_IP" ]; then
     echo -e $SSH_IP "で指定されました。\n\n"
 fi
 
-echo -e "default['sshd']['port'] = '${SSH_PORT}'\n" >>  /var/chef/cookbooks/sshd/attributes/default.rb
+##
+# PowerDNSのパスワードを設定する
+##
+POWERDNS_PWD_CHECK="FirstCheck"
+
+while [ -n "$POWERDNS_PWD_CHECK" -o -z "$POWERDNS_PWD" ]
+do
+    echo -e "PowerDNSの管理画面PWDを指定してください。"
+    read POWERDNS_PWD
+
+    if [ -z "$POWERDNS_PWD" ]; then
+        continue
+    fi
+
+done
+
+echo -e "指定されました。\n\n"
+
+##
+# ユーザーからの入力をセットする
+##
+echo -e "default['sshd']['Port'] = '${SSH_PORT}'\n" >>  /var/chef/cookbooks/sshd/attributes/default.rb
 echo -e "default['iptables']['sshd_port'] = '${SSH_PORT}'\n" >>  /var/chef/cookbooks/iptables/attributes/default.rb
+echo -e "default['powerdns']['webserver-password'] = '${POWERDNS_PWD}'\n" >>  /var/chef/cookbooks/powerdns/attributes/default.rb
+
+echo -e "\n\nChef-Soloを起動します。\n\n"
 
 chef-solo -c /var/chef/config/solo.rb -j /var/chef/bin/runlist.json
+
+echo -e "\n\nChef-Soloの動作が完了しました。エラー等がないか確認してください。\n\n"

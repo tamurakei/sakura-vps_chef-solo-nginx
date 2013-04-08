@@ -1,0 +1,31 @@
+setuid=pdns
+setgid=pdns
+launch=gmysql
+gmysql-host=localhost
+gmysql-user=powerdns
+gmysql-password=powerdns
+gmysql-dbname=powerdns
+
+#################################
+# webserver	Start a webserver for monitoring
+#
+# webserver=no
+webserver=yes
+
+#################################
+# webserver-address	IP Address of webserver to listen on
+#
+# webserver-address=127.0.0.1
+webserver-address=<%= node['powerdns']['webserver-address'] %>
+
+#################################
+# webserver-password	Password required for accessing the webserver
+#
+# webserver-password=
+webserver-password=<%= node['powerdns']['webserver-password'] %>
+
+#################################
+# webserver-port	Port of webserver to listen on
+#
+# webserver-port=8081
+webserver-port=<%= node['powerdns']['webserver-port'] %>
