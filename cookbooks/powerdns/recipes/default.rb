@@ -56,8 +56,16 @@ end
 #
 # Settings
 #
-file "SQL.txt" do
-    command "mysql -u root < #{params[:name]}"
+cookbook_file "/tmp/SQL.txt" do
+  source "SQL.txt"
+  mode 0644
+  owner "root"
+  group "root"
+end
+bash "install-poweradmin" do
+    code <<-EOC
+    mysql -u root < /tmp/SQL.txt
+    EOC
 end
 
 #
