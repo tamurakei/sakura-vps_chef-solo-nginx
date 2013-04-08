@@ -81,7 +81,7 @@ echo -e "指定されました。\n\n"
 echo -e '{' > $RUN_LIST_JSON
 echo -e '"sshd":{"Port":'$SSH_PORT'},' >>  $RUN_LIST_JSON
 echo -e '"iptables":{"sshd_port":'$SSH_PORT'},' >>  $RUN_LIST_JSON
-echo -e '"powerdns":{"webserver-password":'$POWERDNS_PWD'},' >>  $RUN_LIST_JSON
+echo -e '"powerdns":{"webserver-password":"'$POWERDNS_PWD'"},' >>  $RUN_LIST_JSON
 echo -e ',"run_list":["role[sakura-vps]"]}' >>$RUN_LIST_JSON
 
 echo -e "\n\nChef-Soloを起動します。\n\n"
