@@ -60,7 +60,7 @@ fi
 ##
 POWERDNS_PWD_CHECK="FirstCheck"
 
-while [ -n "$POWERDNS_PWD_CHECK" -o -z "$POWERDNS_PWD" ]
+while [ -z "$POWERDNS_PWD" ]
 do
     echo -e "PowerDNSの管理画面PWDを指定してください。"
     read POWERDNS_PWD
