@@ -53,6 +53,7 @@ template "/etc/pdns/pdns.conf" do
     notifies :restart, "service[pdns]"
 end
 
+
 #
 # Settings
 #
@@ -71,6 +72,19 @@ end
 #
 # PowerAdmin
 #
+package "php" do
+    action :install
+    not_if "rpm -q php"
+end
+package "php-mbstring" do
+    action :install
+    not_if "rpm -q php-mbstring"
+end
+package "php-mcrypt" do
+    action :install
+    not_if "rpm -q php-mcrypt"
+end
+
 git "/tmp/poweradmin" do
     repository "git://github.com/poweradmin/poweradmin.git"
     reference "master"
