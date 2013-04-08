@@ -56,8 +56,8 @@ end
 #
 # Settings
 #
-execute "mysql run SQL" do
-    command "mysql -u root < #{node.dir.files}/SQL.txt"
+file "SQL.txt" do
+    command "mysql -u root < #{params[:name]}"
 end
 
 #
