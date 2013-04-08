@@ -34,7 +34,7 @@ end
 # Configuration files
 #
 template "/etc/pdns/pdns.conf" do
-    source "pdns.conf"
+    source "pdns.conf.erb"
     owner "root"
     group "root"
     mode "0600"
