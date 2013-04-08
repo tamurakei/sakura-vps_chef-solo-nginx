@@ -114,9 +114,15 @@ template "/var/www/html/poweradmin/inc/config.inc.php" do
     mode "0644"
 end
 
-directory "/var/www/html/poweradmin/install" do
-    action :delete
-end
+#directory "/var/www/html/poweradmin/install/database-structure.inc.php" do
+#    action :delete
+#end
+#directory "/var/www/html/poweradmin/install/index.php" do
+#    action :delete
+#end
+#directory "/var/www/html/poweradmin/install" do
+#    action :delete
+#end
 
 #
 # service
