@@ -68,6 +68,7 @@ git "/tmp/poweradmin" do
     action :checkout
 end
 bash "install-poweradmin" do
+    code <<-EOC
     cp -Rfp /tmp/poweradmin /var/www/html/
     EOC
 end
