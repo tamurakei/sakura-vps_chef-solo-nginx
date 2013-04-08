@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if [ -d /var/chef/backup ]; then
-    echo "既にインストールされています。このスクリプトの初期設定を想定していますので、終了します。"
+    echo "既に設定がされています。今のところ、このスクリプトの初期設定を想定していますので、終了します。"
     exit 0
 fi
 
-echo -e "\n\nchefをインストールします。。少し時間がかかります。\n\n"
+echo -e "\n\nchefをダウンロードして、インストールします。。少し時間がかかります。\n\n"
 
 curl -L https://www.opscode.com/chef/install.sh | sh
 
