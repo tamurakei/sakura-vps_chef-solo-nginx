@@ -38,6 +38,10 @@ service "mysqld" do
     action [ :enable , :start ]
 end
 
+service "pdns" do
+    supports :status => true, :restart => true, :reload => true
+end
+
 #
 # Configuration files
 #
@@ -46,7 +50,7 @@ template "/etc/pdns/pdns.conf" do
     owner "root"
     group "root"
     mode "0600"
-    notifies :restart, "service[powerdns]"
+    notifies :restart, "service[pdns]"
 end
 
 
