@@ -84,6 +84,14 @@ package "php-mcrypt" do
     action :install
     not_if "rpm -q php-mcrypt"
 end
+package "php-mysql" do
+    action :install
+    not_if "rpm -q php-mysql"
+end
+package "php-pdo" do
+    action :install
+    not_if "rpm -q php-pdo"
+end
 
 git "/tmp/poweradmin" do
     repository "git://github.com/poweradmin/poweradmin.git"
