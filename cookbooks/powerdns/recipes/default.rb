@@ -63,7 +63,7 @@ cookbook_file "/tmp/SQL.txt" do
   owner "root"
   group "root"
 end
-bash "install-poweradmin" do
+bash "sql-powerdns" do
     code <<-EOC
     mysql -u root < /tmp/SQL.txt
     EOC
@@ -114,15 +114,22 @@ template "/var/www/html/poweradmin/inc/config.inc.php" do
     mode "0644"
 end
 
-#directory "/var/www/html/poweradmin/install/database-structure.inc.php" do
-#    action :delete
-#end
-#directory "/var/www/html/poweradmin/install/index.php" do
-#    action :delete
-#end
-#directory "/var/www/html/poweradmin/install" do
-#    action :delete
-#end
+bash "sql-poweradmin" do
+    code <<-EOC
+    mysql -u root -p #{node["powerdns"]["db_name"] < /var/www/poweradmin/sql/poweradmin-mysql-db-structure.sql
+    EOC
+end
+
+
+file "/var/www/html/poweradmin/install/database-structure.inc.php" do
+    action :delete
+end
+file "/var/www/html/poweradmin/install/index.php" do
+    action :delete
+end
+directory "/var/www/html/poweradmin/install" do
+    action :delete
+end
 
 #
 # service
