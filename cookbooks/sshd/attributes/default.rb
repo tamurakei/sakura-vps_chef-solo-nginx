@@ -1,5 +1,5 @@
 # sshd attributes
-default['sshd']['PermitRootLogin'] = 'no'
+default['sshd']['PermitRootLogin'] = 'yes'
 default['sshd']['PasswordAuthentication'] = 'yes'
 
 

@@ -116,7 +116,7 @@ end
 
 bash "sql-poweradmin" do
     code <<-EOC
-    mysql -u root -p #{node["powerdns"]["db_name"]} < /var/www/html/poweradmin/sql/poweradmin-mysql-db-structure.sql
+    mysql -u root #{node["powerdns"]["db_name"]} < /var/www/html/poweradmin/sql/poweradmin-mysql-db-structure.sql
     EOC
 end
 
