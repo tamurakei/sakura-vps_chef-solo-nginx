@@ -53,5 +53,34 @@ template "/etc/pdns/pdns.conf" do
     notifies :restart, "service[pdns]"
 end
 
+#
+# Settings
+#
+execute "mysql run SQL" do
+    command "mysql -u root < #{node.dir.files}/SQL.txt"
+end
+
+#
+# PowerAdmin
+#
+git "/tmp/poweradmin" do
+    repository "git://github.com/poweradmin/poweradmin.git" reference "master"
+    action :checkout
+end
+bash "install-poweradmin" do
+    cp -Rfp /tmp/poweradmin /var/www/html/
+    EOC
+end
+
+#
+# Configuration files
+#
+template "/var/www/html/poweradmin/inc/config.inc.php" do
+    source "poweradmin.config.php.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+end
+
 
 

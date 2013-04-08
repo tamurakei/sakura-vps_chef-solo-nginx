@@ -1,10 +1,10 @@
 setuid=pdns
 setgid=pdns
 launch=gmysql
-gmysql-host=localhost
-gmysql-user=powerdns
-gmysql-password=powerdns
-gmysql-dbname=powerdns
+gmysql-host=<%= node['powerdns']['db_host']  %>
+gmysql-user=<%= node['powerdns']['db_user']  %>
+gmysql-password=<%= node['powerdns']['db_pass']  %>
+gmysql-dbname=<%= node['powerdns']['db_name']  %>
 
 #################################
 # webserver	Start a webserver for monitoring
