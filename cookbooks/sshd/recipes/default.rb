@@ -2,6 +2,12 @@
 # sshd
 #
 
+#
+# service
+#
+service "sshd" do
+    supports :status => true, :restart => true, :reload => true
+end
 
 #
 # Configuration files
