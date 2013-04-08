@@ -64,7 +64,8 @@ end
 # PowerAdmin
 #
 git "/tmp/poweradmin" do
-    repository "git://github.com/poweradmin/poweradmin.git" reference "master"
+    repository "git://github.com/poweradmin/poweradmin.git"
+    reference "master"
     action :checkout
 end
 bash "install-poweradmin" do
