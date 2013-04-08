@@ -12,7 +12,7 @@ Pull Request,Forkなどは歓迎いたします。
 サーバ構築後の更新やメンテナンスにはまだ対応しておりません。
 
 ## 最初のログイン後に実行する１行だけのコマンドライン
-`git clone https://github.com/diverta/sakura-vps_chef-solo.git /var/chef && sh /var/chef/bin/first-run`
+`git clone https://github.com/diverta/sakura-vps_chef-solo.git /usr/local/chef && sh /usr/local/chef/bin/first-run`
 
 
 
