@@ -21,13 +21,21 @@ package "mysql-server" do
 end
 
 #
-# command
+# chkconfig
 #
-service "powerdns" do
-    stop_command    "service pdns stop"
-    start_command   "service pdns start"
-    restart_command "service pdns restart"
-    action :nothing
+execute "chkconfig --add mysqld" do
+    command "chkconfig --add mysqld"
+end
+execute "chkconfig mysqld on" do
+    command "chkconfig mysqld on"
+end
+
+#
+# service
+#
+service "mysqld" do
+    supports :status => true, :restart => true, :reload => true
+    action [ :enable , :start ]
 end
 
 #

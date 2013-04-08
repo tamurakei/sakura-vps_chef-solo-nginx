@@ -3,16 +3,6 @@
 #
 
 #
-# command
-#
-service "iptables" do
-    stop_command    "/etc/init.d/iptables stop"
-    start_command   "/etc/init.d/iptables start"
-    restart_command "/etc/init.d/iptables restart"
-    action :nothing
-end
-
-#
 # Configuration files
 #
 template "/etc/sysconfig/iptables" do

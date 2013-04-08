@@ -4,5 +4,5 @@
 #
 
 log_level :info
-cookbook_path ["/var/chef/cookbooks"]
-role_path "/var/chef/roles"
+cookbook_path ["/usr/local/chef/cookbooks"]
+role_path "/usr/local/chef/roles"

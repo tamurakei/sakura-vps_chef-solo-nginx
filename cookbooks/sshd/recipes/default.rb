@@ -2,15 +2,6 @@
 # sshd
 #
 
-#
-# command
-#
-service "sshd" do
-    stop_command    "/etc/init.d/sshd stop"
-    start_command   "/etc/init.d/sshd start"
-    restart_command "/etc/init.d/sshd restart"
-    action :nothing
-end
 
 #
 # Configuration files

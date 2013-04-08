@@ -1,6 +1,8 @@
 #!/bin/sh
 
-if [ -d /var/chef/backup ]; then
+RUN_LIST_JSON='/usr/local/chef/bin/run_list.json'
+
+if [ -d /usr/local/chef/backup ]; then
     echo "既に設定がされています。今のところ、このスクリプトの初期設定を想定していますので、終了します。"
     exit 0
 fi
@@ -74,14 +76,16 @@ done
 echo -e "指定されました。\n\n"
 
 ##
-# ユーザーからの入力をセットする
+# ユーザーからの入力をrun_list.jsonにセットする
 ##
-echo -e "default['sshd']['Port'] = '${SSH_PORT}'\n" >>  /var/chef/cookbooks/sshd/attributes/default.rb
-echo -e "default['iptables']['sshd_port'] = '${SSH_PORT}'\n" >>  /var/chef/cookbooks/iptables/attributes/default.rb
-echo -e "default['powerdns']['webserver-password'] = '${POWERDNS_PWD}'\n" >>  /var/chef/cookbooks/powerdns/attributes/default.rb
+echo -e '{" > $RUN_LIST_JSON
+echo -e '"sshd":{"Port":},${SSH_PORT},' >>  $RUN_LIST_JSON
+echo -e '"iptables":{"sshd_port":},${SSH_PORT},' >>  $RUN_LIST_JSON
+echo -e '"powerdns":{"webserver-password":},${POWERDNS_PWD},' >>  $RUN_LIST_JSON
+echo -e ',run_list":["role[sakura-vps]"]}' >>$RUN_LIST_JSON
 
 echo -e "\n\nChef-Soloを起動します。\n\n"
 
-chef-solo -c /var/chef/config/solo.rb -j /var/chef/bin/runlist.json
+chef-solo -c /usr/local/chef/config/solo.rb -j /usr/local/chef/bin/run.json
 
 echo -e "\n\nChef-Soloの動作が完了しました。エラー等がないか確認してください。\n\n"
