@@ -3,6 +3,13 @@
 #
 
 #
+# service
+#
+service "iptables" do
+    supports :status => true, :restart => true, :reload => true
+end
+
+#
 # Configuration files
 #
 template "/etc/sysconfig/iptables" do
