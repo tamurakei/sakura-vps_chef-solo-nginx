@@ -1,6 +1,7 @@
 #
 # wordpress
 #
+require "socket"
 
 #
 # Package install
@@ -35,7 +36,7 @@ remote_file "/tmp/wordpress-3.5.1-ja.tar.gz" do
 end
 
 execute "install-wordpress" do
-    command "tar zxvf /tmp/wordpress-3.5.1-ja.tar.gz -C /tmp/ && mv /tmp/wordpress/* /var/www/html/"
+    command "tar zxvf /tmp/wordpress-3.5.1-ja.tar.gz -C /tmp/ && mv /tmp/wordpress/* /var/www/html/ && chown -Rf apache:apache /var/www/html/*"
 end
 
 package "mysql-server" do
@@ -103,6 +104,12 @@ service "httpd" do
     action [ :enable , :restart ]
 end
 
+#
+# log
+#
+log "このURLからWordPressの設定を完了させてください。 #{IPSocket::getaddress(Socket::gethostname)}/wp-admin/install.php " do
+    level :info
+end
 
 
 

@@ -1,6 +1,6 @@
 # wordpress attributes
 
-default['wordpress']['DB_NAME'] = 'localhost'
+default['wordpress']['DB_NAME'] = 'wordpress'
 default['wordpress']['DB_USER'] = 'wpuser'
 default['wordpress']['DB_PASSWORD'] = (("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a).shuffle[0..7].join
 default['wordpress']['AUTH_KEY'] = (("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a).shuffle[0..7].join
