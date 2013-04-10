@@ -37,4 +37,4 @@ create table supermasters (
   account VARCHAR(40) DEFAULT NULL
 );
 
-GRANT SELECT ON <%= node['powerdns']['db_name']  %>.* TO <%= node['powerdns']['db_user']  %>@localhost IDENTIFIED BY '<%= node['powerdns']['db_pass']  %>';
+GRANT SELECT,INSERT,UPDATE,DELETE ON <%= node['powerdns']['db_name']  %>.* TO <%= node['powerdns']['db_user']  %>@localhost IDENTIFIED BY '<%= node['powerdns']['db_pass']  %>';

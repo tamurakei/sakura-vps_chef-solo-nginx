@@ -87,4 +87,6 @@ echo -e "\n\nChef-Soloを起動します。\n\n"
 
 chef-solo -c /usr/local/chef/config/solo.rb -j /usr/local/chef/bin/run_list.json
 
+rm -Rf /tmp/*
+
 echo -e "\n\nChef-Soloの動作が完了しました。エラー等がないか確認してください。\n\n"

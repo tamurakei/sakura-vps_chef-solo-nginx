@@ -83,9 +83,9 @@ template "/var/www/html/wp-config.php" do
     mode "0600"
 end
 
-file "/var/www/html/wp-admin/setup-config.php" do
-    action :delete
-end
+#file "/var/www/html/wp-admin/setup-config.php" do
+#    action :delete
+#end
 
 
 
