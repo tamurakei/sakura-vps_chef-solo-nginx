@@ -3,7 +3,7 @@ require "socket"
 
 default['powerdns']['webserver-address'] = IPSocket::getaddress(Socket::gethostname)
 default['powerdns']['webserver-port'] = '8081'
-default['powerdns']['webserver-password'] = 'admin'
+default['powerdns']['webserver-password'] = (("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a).shuffle[0..7].join
 
 
 default['powerdns']['db_host'] = 'localhost'
