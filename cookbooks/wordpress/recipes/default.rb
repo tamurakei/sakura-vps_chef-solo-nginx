@@ -52,6 +52,13 @@ end
 execute "chkconfig mysqld on" do
     command "chkconfig mysqld on"
 end
+execute "chkconfig --add httpd" do
+    command "chkconfig --add httpd"
+end
+execute "chkconfig httpd on" do
+    command "chkconfig httpd on"
+end
+
 
 #
 # service
@@ -80,7 +87,7 @@ template "/var/www/html/wp-config.php" do
     source "wp-config.php.erb"
     owner "root"
     group "root"
-    mode "0600"
+    mode "0644"
 end
 
 #file "/var/www/html/wp-admin/setup-config.php" do
