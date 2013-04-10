@@ -2,7 +2,7 @@
 
 RUN_LIST_JSON='/usr/local/chef/bin/run_list_$1.json'
 
-if [ !-f $RUN_LIST_JSON ]; then
+if [ ! -f $RUN_LIST_JSON ]; then
     echo "コマンドの引数が不正です"
     exit 0
 fi
