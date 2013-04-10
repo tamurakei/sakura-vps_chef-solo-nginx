@@ -1,6 +1,11 @@
 #!/bin/sh
 
-RUN_LIST_JSON='/usr/local/chef/bin/run_list.json'
+RUN_LIST_JSON='/usr/local/chef/bin/run_list_$1.json'
+
+if [ -f $RUN_LIST_JSON ]; then
+    echo "コマンドの引数が不正です"
+    exit 0
+fi
 
 if [ -d /usr/local/chef/backup ]; then
     echo "既に設定がされています。今のところ、このスクリプトの初期設定を想定していますので、終了します。"
@@ -85,7 +90,7 @@ echo -e '"run_list":["role[sakura-vps]"]}' >>$RUN_LIST_JSON
 
 echo -e "\n\nChef-Soloを起動します。\n\n"
 
-chef-solo -c /usr/local/chef/config/solo.rb -j /usr/local/chef/bin/run_list.json
+chef-solo -c /usr/local/chef/config/solo.rb -j $RUN_LIST_JSON
 
 rm -Rf /tmp/*
 

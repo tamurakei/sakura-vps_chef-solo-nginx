@@ -1,4 +1,4 @@
-name "sakura-vps"
+name "all"
 description "for SAKURA Internet VPS Server"
 run_list(
   "recipe[sshd]",
@@ -10,5 +10,5 @@ run_list(
 )
 
 default_attributes({
-  :role                => "sakura-vps",
+  :role                => "all",
 })
