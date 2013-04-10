@@ -57,7 +57,7 @@ end
 #
 # Settings
 #
-cookbook_file "/tmp/SQL.txt" do
+cookbook_file "/tmp/pdns-SQL.txt" do
   source "SQL.txt"
   mode 0644
   owner "root"
@@ -65,7 +65,7 @@ cookbook_file "/tmp/SQL.txt" do
 end
 bash "sql-powerdns" do
     code <<-EOC
-    mysql -u root < /tmp/SQL.txt
+    mysql -u root < /tmp/pdns-SQL.txt
     EOC
 end
 
