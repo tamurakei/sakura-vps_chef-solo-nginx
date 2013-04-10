@@ -1,6 +1,6 @@
 #!/bin/sh
 
-RUN_LIST_JSON='/usr/local/chef/bin/run_list_$1.json'
+RUN_LIST_JSON='/usr/local/chef/bin/run_list_'$1'.json'
 
 if [ ! -f $RUN_LIST_JSON ]; then
     echo "コマンドの引数が不正です"
@@ -86,7 +86,7 @@ fi
 echo -e '{' > $RUN_LIST_JSON
 echo -e '"sshd":{"Port":'$SSH_PORT'},' >>  $RUN_LIST_JSON
 echo -e '"iptables":{"sshd_port":'$SSH_PORT'},' >>  $RUN_LIST_JSON
-echo -e '"run_list":["role[$1]"]}' >>$RUN_LIST_JSON
+echo -e '"run_list":["role['$1']"]}' >>$RUN_LIST_JSON
 
 echo -e "\n\nChef-Soloを起動します。\n\n"
 
