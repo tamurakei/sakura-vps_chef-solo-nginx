@@ -1,6 +1,6 @@
-CREATE DATABASE pdns;
+CREATE DATABASE <%= node['powerdns']['db_name']  %>;
 
-use pdns;
+use <%= node['powerdns']['db_name']  %>;
 
 CREATE TABLE domains (
  id		 INT auto_increment,
@@ -37,4 +37,4 @@ create table supermasters (
   account VARCHAR(40) DEFAULT NULL
 );
 
-GRANT SELECT ON pdns.* TO pdns@localhost IDENTIFIED BY 'pdns';
+GRANT SELECT ON <%= node['powerdns']['db_name']  %>.* TO <%= node['powerdns']['db_user']  %>@localhost IDENTIFIED BY '<%= node['powerdns']['db_pass']  %>';

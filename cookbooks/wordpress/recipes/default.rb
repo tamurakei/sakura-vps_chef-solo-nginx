@@ -64,17 +64,30 @@ end
 #
 # Settings
 #
-cookbook_file "/tmp/wordpress-SQL.txt" do
-    source "SQL.txt"
-    mode 0644
+template "/tmp/wordpress-SQL.txt" do
+    source "SQL.erb"
     owner "root"
     group "root"
+    mode "0600"
 end
 bash "sql-wordpress" do
     code <<-EOC
     mysql -u root < /tmp/wordpress-SQL.txt
     EOC
 end
+
+template "/var/www/html/wp-config.php" do
+    source "wp-config.php.erb"
+    owner "root"
+    group "root"
+    mode "0600"
+end
+
+file "/var/www/html/wp-admin/setup-config.php" do
+    action :delete
+end
+
+
 
 #
 # service
