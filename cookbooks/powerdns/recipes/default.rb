@@ -57,11 +57,11 @@ end
 #
 # Settings
 #
-cookbook_file "/tmp/pdns-SQL.txt" do
-  source "SQL.txt"
-  mode 0644
-  owner "root"
-  group "root"
+template "/tmp/pdns-SQL.txt" do
+    source "SQL.erb"
+    mode "0644"
+    owner "root"
+    group "root"
 end
 bash "sql-powerdns" do
     code <<-EOC
