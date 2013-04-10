@@ -6,6 +6,7 @@ run_list(
   "recipe[httpd]",
   "recipe[php]",
   "recipe[powerdns]",
+  "recipe[wordpress]",
 )
 
 default_attributes({
