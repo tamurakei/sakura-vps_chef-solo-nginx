@@ -36,7 +36,7 @@ remote_file "/tmp/wordpress-3.5.1-ja.tar.gz" do
 end
 
 execute "install-wordpress" do
-    command "tar zxvf /tmp/wordpress-3.5.1-ja.tar.gz -C /tmp/ && mv /tmp/wordpress/* /var/www/html/ && chown -Rf apache:apache /var/www/html/*"
+    command "tar zxvf /tmp/wordpress-3.5.1-ja.tar.gz -C /tmp/ && mv /tmp/wordpress/* /var/www/html/ && chown -R apache:apache /var/www/html/"
 end
 
 package "mysql-server" do
