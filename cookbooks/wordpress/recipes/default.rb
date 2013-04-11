@@ -23,12 +23,12 @@ end
 
 package "php-xml" do
     action :install
-    not_if "rpm -q php-mbstring"
+    not_if "rpm -q php-xml"
 end
 
 package "php-mysql" do
     action :install
-    not_if "rpm -q php-mbstring"
+    not_if "rpm -q php-mysql"
 end
 
 remote_file "/tmp/wordpress-3.5.1-ja.tar.gz" do
