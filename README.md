@@ -28,7 +28,7 @@ Pull Request,Forkなどは歓迎いたします。
 
 ## wordpress
 * 通常のインストールを行う
-
+* chef-soloでのインストール後、http://[サーバのIPアドレス]/wp-admin/install.phpで初期設定をしてください。
 wordpressのみインストールする場合は、
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /usr/local/chef && sh /usr/local/chef/bin/run wordpress`
 
