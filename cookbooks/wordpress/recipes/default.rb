@@ -107,7 +107,8 @@ end
 #
 # log
 #
-log "このURLからWordPressの設定を完了させてください。 http://#{IPSocket::getaddress(Socket::gethostname)}/wp-admin/install.php " do
+log "インストール後の作業" do
+    message "このURLからWordPressの設定を完了させてください。 http://#{IPSocket::getaddress(Socket::gethostname)}/wp-admin/install.php "
     level :info
 end
 

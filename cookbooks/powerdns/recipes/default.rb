@@ -141,10 +141,12 @@ end
 #
 # log
 #
-log "PowerDNSのステータス確認URLは http://#{node['powerdns']['webserver-address']}:8081/ です。ID: admin PWD: admin でログインしてください。" do
+log "PowerDNSインストール後の作業" do
+    message "PowerDNSのステータス確認URLは http://#{node['powerdns']['webserver-address']}:8081/ です。ID: admin PWD: #{node['powerdns']['webserver-password']} でログインしてください。"
     level :info
 end
-log "PowerAdminのURLは http://#{node['powerdns']['webserver-address']}/poweradmin/ です。ID:admin PWD:#{node['powerdns']['webserver-password']} でログインしてください。" do
+log "PowerAdminインストール後の作業" do
+    message "PowerAdminのURLは http://#{node['powerdns']['webserver-address']}/poweradmin/ です。ID:admin PWD:adminでログインしてください。ログイン後、すぐにPWDを変更しましょう。"
     level :info
 end
 
