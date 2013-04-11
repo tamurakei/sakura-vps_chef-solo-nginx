@@ -16,7 +16,6 @@ Pull Request,Forkなどは歓迎いたします。
 
 
 
-
 # インストール・設定されるもの
 調整しながら行っておりますので、間違っている点や修正するべき点は遠慮なくご指摘ください。
 
@@ -29,14 +28,19 @@ Pull Request,Forkなどは歓迎いたします。
 
 ## wordpress
 * 通常のインストールを行う
+
 wordpressのみインストールする場合は、
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /usr/local/chef && sh /usr/local/chef/bin/run wordpress`
 
 ## powerdns
 * PowerAdminもインストールする
+
 powerdnsのみインストールする場合は、
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /usr/local/chef && sh /usr/local/chef/bin/run powerdns`
 
 
+# 株式会社ディバータについて
 
+[RCMS](http://www.r-cms.jp/)というCMSをSaaS形式で提供している会社です。今後、このSaaS環境をオープン化していくにあたって、Chefなどの技術を勉強しているところです。
+現在、ディレクター、エンジニアを絶賛募集中です！ご興味ある方はお気軽に[こちら](mailto:saiyo@diverta.co.jp)までご連絡ください。
 
