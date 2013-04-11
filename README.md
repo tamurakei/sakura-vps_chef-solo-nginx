@@ -14,6 +14,8 @@ Pull Request,Forkなどは歓迎いたします。
 ## 最初のログイン後に実行する１行だけのコマンドライン
 `git clone https://github.com/diverta/sakura-vps_chef-solo.git /usr/local/chef && sh /usr/local/chef/bin/run all`
 
+下記に個別にWordPressのみインストールする場合なども記載がありますので、参照してください。
+
 
 
 # インストール・設定されるもの
