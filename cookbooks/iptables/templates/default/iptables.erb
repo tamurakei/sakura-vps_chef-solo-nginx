@@ -10,7 +10,14 @@
 -A INPUT -p 51 -j ACCEPT
 -A INPUT -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
 
+<% if node['iptables']['sshd_ip'] != "" then -%>
+<% @ip_address = node['iptables']['sshd_ip'].split(",") -%>
+<% @ip_address.each do |ip| -%>
+-A INPUT -m state --state NEW -m tcp -p tcp --dport <%= node['iptables']['sshd_port'] %> -s <%= ip %> -j ACCEPT
+<% end -%>
+<% else -%>
 -A INPUT -m state --state NEW -m tcp -p tcp --dport <%= node['iptables']['sshd_port'] %> -j ACCEPT
+<% end -%>
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 
