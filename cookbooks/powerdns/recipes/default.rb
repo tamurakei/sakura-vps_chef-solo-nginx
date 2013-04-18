@@ -15,6 +15,16 @@ package "pdns-backend-mysql" do
     not_if "rpm -q pdns-backend-mysql"
 end
 
+execute "powerdns epel install" do
+    command "yum --enablerepo=epel install -y pdns"
+    not_if "rpm -q powerdns"
+end
+
+execute "pdns-backend-mysql epel install" do
+    command "yum --enablerepo=epel install -y pdns-backend-mysql"
+    not_if "rpm -q pdns-backend-mysql"
+end
+
 package "mysql-server" do
     action :install
     not_if "rpm -q mysql-server"
