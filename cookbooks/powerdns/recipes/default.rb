@@ -7,11 +7,13 @@
 #
 package "powerdns" do
     action :install
+    options "--enablerepo=epel"
     not_if "rpm -q powerdns"
 end
 
 package "pdns-backend-mysql" do
     action :install
+    options "--enablerepo=epel"
     not_if "rpm -q pdns-backend-mysql"
 end
 

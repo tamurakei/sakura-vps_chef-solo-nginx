@@ -84,9 +84,8 @@ fi
 # ユーザーからの入力をrun_list.jsonにセットする
 ##
 echo -e '{' > $RUN_LIST_JSON
-echo -e '"sshd":{"Port":'$SSH_PORT'},' >>  $RUN_LIST_JSON
-echo -e '"iptables":{"sshd_port":'$SSH_PORT'},' >>  $RUN_LIST_JSON
-echo -e '"iptables":{"sshd_ip":'$SSH_IP'},' >>  $RUN_LIST_JSON
+echo -e '"sshd":{"Port":"'$SSH_PORT'"},' >>  $RUN_LIST_JSON
+echo -e '"iptables":{"sshd_port":"'$SSH_PORT'","sshd_ip":"'$SSH_IP'"},' >>  $RUN_LIST_JSON
 echo -e '"run_list":["role['$1']"]}' >>$RUN_LIST_JSON
 
 echo -e "\n\nChef-Soloを起動します。\n\n"
